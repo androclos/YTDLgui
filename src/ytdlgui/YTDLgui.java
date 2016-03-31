@@ -21,21 +21,9 @@ public class YTDLgui {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        
-        /*String[] cmd = {"youtube-dl.exe", "--extract-audio" ,"--audio-format", "mp3", "https://www.youtube.com/watch?v=0t2tjNqGyJI"};
 
         
-        Process p = Runtime.getRuntime().exec(cmd);
-        BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
-        
-        String s = null;
-        while ((s = stdInput.readLine()) != null) {
-            System.out.println(s);
-}*/
-        
-SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {                                           
                
