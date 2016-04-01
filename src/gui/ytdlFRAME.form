@@ -31,7 +31,7 @@
                       <Component id="jScrollPane2" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -41,8 +41,10 @@
                               <Component id="FormatCodeBox" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="FormatCodeList" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="Stopdl" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
                               <Component id="dlButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
@@ -67,6 +69,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="FormatCodeBox" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="FormatCodeList" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Stopdl" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -129,6 +132,11 @@
     <Component class="javax.swing.JProgressBar" name="dlbar">
       <Properties>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Stopdl">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Stop Download"/>
       </Properties>
     </Component>
   </SubComponents>

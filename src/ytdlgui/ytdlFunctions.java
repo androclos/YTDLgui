@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
+import java.util.concurrent.ExecutorService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -22,7 +23,7 @@ import javax.swing.JTextArea;
  */
 public class ytdlFunctions {
     
-    public static void dlsong(final UIfunctions uifuncs) {
+    public static void dlsong(final UIfunctions uifuncs, final ExecutorService exesrv, final ProcessHolder currentproc) {
     
         try {
             
@@ -44,6 +45,7 @@ public class ytdlFunctions {
                         }
                         
                         Process p = Runtime.getRuntime().exec(cmd);
+                        currentproc.setP(p);
                         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
                         
                         String s = null;
@@ -69,8 +71,9 @@ public class ytdlFunctions {
 
                 }
             };
-            new Thread(r).start();
-
+            exesrv.submit(r);
+            //new Thread(r).start();
+            
         } catch (Exception ex) {
             Logger.getLogger(ytdlFunctions.class.getName()).log(Level.SEVERE, null, ex);
         }

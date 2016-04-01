@@ -10,6 +10,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -23,6 +25,8 @@ public class Connector {
     
     private gui.ytdlFRAME gui;
     private UIfunctions uifuncs;
+    private ExecutorService exesrv;
+    private ProcessHolder currentproc;
     
     public Connector(){
 
@@ -32,6 +36,9 @@ public class Connector {
             e.printStackTrace();
         }
        
+        exesrv = Executors.newFixedThreadPool(1);
+        currentproc = new ProcessHolder();
+        
         gui = new ytdlFRAME();
         gui.setuiconfig();
         uifuncs = new UIfunctions(gui);
@@ -40,6 +47,7 @@ public class Connector {
         setListeners();
         gui.setVisible(true);
 
+        
     }
     
     private void ChechkFFmpeg(){
@@ -57,7 +65,18 @@ public class Connector {
         gui.getDlButton().addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
-                ytdlFunctions.dlsong(uifuncs);
+                ytdlFunctions.dlsong(uifuncs,exesrv,currentproc);
+                
+            }
+        });
+        
+        gui.getStopdl().addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                
+                exesrv.shutdownNow();
+                currentproc.stopproc();
+                uifuncs.ResetDlBar();
+                uifuncs.WriteToConsole("Download stopped by user."+"\n");
                 
             }
         });

@@ -54,6 +54,11 @@ public class ytdlFRAME extends javax.swing.JFrame {
     public JProgressBar getDlbar() {
         return dlbar;
     }
+
+    public JButton getStopdl() {
+        return Stopdl;
+    }
+    
     
     
     public void setuiconfig(){
@@ -87,6 +92,7 @@ public class ytdlFRAME extends javax.swing.JFrame {
         FormatCodeBox = new javax.swing.JCheckBox();
         FormatCodeList = new javax.swing.JComboBox();
         dlbar = new javax.swing.JProgressBar();
+        Stopdl = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("YTDL");
@@ -105,6 +111,8 @@ public class ytdlFRAME extends javax.swing.JFrame {
 
         dlbar.setToolTipText("");
 
+        Stopdl.setText("Stop Download");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -115,7 +123,7 @@ public class ytdlFRAME extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addComponent(jLabel1)
@@ -124,7 +132,9 @@ public class ytdlFRAME extends javax.swing.JFrame {
                                 .addGap(113, 113, 113)
                                 .addComponent(FormatCodeBox)
                                 .addGap(18, 18, 18)
-                                .addComponent(FormatCodeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(FormatCodeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Stopdl))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(154, 154, 154)
                                 .addComponent(dlButton)
@@ -143,7 +153,8 @@ public class ytdlFRAME extends javax.swing.JFrame {
                     .addComponent(ytlinkTEXTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(FormatCodeBox)
-                    .addComponent(FormatCodeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FormatCodeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Stopdl))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dlButton)
@@ -167,6 +178,7 @@ public class ytdlFRAME extends javax.swing.JFrame {
     private javax.swing.JTextArea Console;
     private javax.swing.JCheckBox FormatCodeBox;
     private javax.swing.JComboBox FormatCodeList;
+    private javax.swing.JButton Stopdl;
     private javax.swing.JButton dlButton;
     private javax.swing.JProgressBar dlbar;
     private javax.swing.JButton infoBTN;
