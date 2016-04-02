@@ -58,6 +58,14 @@ public class ytdlFRAME extends javax.swing.JFrame {
     public JButton getStopdl() {
         return Stopdl;
     }
+
+    public JTextField getDlspeedlimit() {
+        return Dlspeedlimit;
+    }
+
+    public JCheckBox getLimitspeedcheck() {
+        return Limitspeedcheck;
+    }
     
     
     
@@ -93,6 +101,9 @@ public class ytdlFRAME extends javax.swing.JFrame {
         FormatCodeList = new javax.swing.JComboBox();
         dlbar = new javax.swing.JProgressBar();
         Stopdl = new javax.swing.JButton();
+        Limitspeedcheck = new javax.swing.JCheckBox();
+        Dlspeedlimit = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("YTDL");
@@ -113,6 +124,12 @@ public class ytdlFRAME extends javax.swing.JFrame {
 
         Stopdl.setText("Stop Download");
 
+        Limitspeedcheck.setText("Limit speed:");
+
+        Dlspeedlimit.setText("100000");
+
+        jLabel2.setText("KB/s");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,18 +140,18 @@ public class ytdlFRAME extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addComponent(ytlinkTEXTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(113, 113, 113)
-                                .addComponent(FormatCodeBox)
-                                .addGap(18, 18, 18)
-                                .addComponent(FormatCodeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Stopdl))
+                                .addComponent(Limitspeedcheck)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Dlspeedlimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(154, 154, 154)
                                 .addComponent(dlButton)
@@ -144,24 +161,37 @@ public class ytdlFRAME extends javax.swing.JFrame {
                                 .addComponent(dlbar, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 42, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(FormatCodeBox)
+                .addGap(18, 18, 18)
+                .addComponent(FormatCodeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(Stopdl)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ytlinkTEXTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
                     .addComponent(FormatCodeBox)
                     .addComponent(FormatCodeList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Stopdl))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ytlinkTEXTFIELD, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(Limitspeedcheck)
+                    .addComponent(Dlspeedlimit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dlButton)
                     .addComponent(infoBTN)
                     .addComponent(dlbar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -176,13 +206,16 @@ public class ytdlFRAME extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea Console;
+    private javax.swing.JTextField Dlspeedlimit;
     private javax.swing.JCheckBox FormatCodeBox;
     private javax.swing.JComboBox FormatCodeList;
+    private javax.swing.JCheckBox Limitspeedcheck;
     private javax.swing.JButton Stopdl;
     private javax.swing.JButton dlButton;
     private javax.swing.JProgressBar dlbar;
     private javax.swing.JButton infoBTN;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField ytlinkTEXTFIELD;
     // End of variables declaration//GEN-END:variables

@@ -77,4 +77,17 @@ public class UIfunctions {
         return frame.getFormatCodeBox().isSelected();
     
     }
+    
+    public String Dlspeed(){
+    
+        return frame.getDlspeedlimit().getText();
+    
+    }
+    
+    public boolean Dlspeedcheck(){
+    
+        return frame.getLimitspeedcheck().isSelected();
+    
+    }
+    
 }

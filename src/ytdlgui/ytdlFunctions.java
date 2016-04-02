@@ -12,9 +12,7 @@ import java.util.StringTokenizer;
 import java.util.concurrent.ExecutorService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JProgressBar;
-import javax.swing.JTextArea;
+
 
 
 /**
@@ -34,13 +32,26 @@ public class ytdlFunctions {
                     
                     try {
                         
+                        String dlspeed = "100000K";
+                        
+                        if(uifuncs.Dlspeedcheck()){
+                            try{
+                                Integer.valueOf(uifuncs.Dlspeed());
+                            }
+                            catch(Exception c){
+                                uifuncs.WriteToConsole("Wrong speed format."+"\n");
+                                return;
+                            }
+                            dlspeed = uifuncs.Dlspeed()+"K";
+                        }
+                        
                         String[] cmd;
                         if(uifuncs.IsFormatCode() && !uifuncs.IsEmptyDropdownlist()){
-                           String[] tempcm1 = {"youtube-dl.exe", "-f", uifuncs.DetSelectedFormat(), uifuncs.GetYtdlLink()};
+                           String[] tempcm1 = {"youtube-dl.exe","-r",dlspeed, "-f", uifuncs.DetSelectedFormat(), uifuncs.GetYtdlLink()};
                            cmd = tempcm1;
                         }
                         else{
-                           String[] tempcm2 = {"youtube-dl.exe", "--extract-audio" ,"--audio-format", "mp3", uifuncs.GetYtdlLink()};
+                           String[] tempcm2 = {"youtube-dl.exe","-r",dlspeed, "--extract-audio" ,"--audio-format", "mp3", uifuncs.GetYtdlLink()};
                            cmd = tempcm2;
                         }
                         
@@ -66,6 +77,7 @@ public class ytdlFunctions {
                             uifuncs.WriteToConsole(s+"\n");
                         }
                     } catch (IOException ex) {
+                        uifuncs.WriteToConsole(ex.getMessage());
                         Logger.getLogger(ytdlFunctions.class.getName()).log(Level.SEVERE, null, ex);
                     }
 

@@ -73,10 +73,15 @@ public class Connector {
         gui.getStopdl().addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
-                exesrv.shutdownNow();
-                currentproc.stopproc();
-                uifuncs.ResetDlBar();
-                uifuncs.WriteToConsole("Download stopped by user."+"\n");
+                try {
+                    exesrv.shutdownNow();
+                    currentproc.stopproc();
+                    Thread.sleep(250);
+                    uifuncs.ResetDlBar();
+                    uifuncs.WriteToConsole("Download stopped by user."+"\n");
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
             }
         });
