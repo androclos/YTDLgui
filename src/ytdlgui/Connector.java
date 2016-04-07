@@ -56,7 +56,7 @@ public class Connector {
     private void ChechkFFmpeg(){
     
         try {
-            Process p = Runtime.getRuntime().exec("ffmpegg -version");
+            Process p = Runtime.getRuntime().exec("ffmpeg -version");
         } catch (IOException ex) {
             try {
                 uifuncs.WriteToConsole("Ffmpeg is not installed! - Download at: https://ffmpeg.zeranoe.com/builds/");
