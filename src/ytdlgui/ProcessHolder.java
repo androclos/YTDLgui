@@ -11,7 +11,7 @@ package ytdlgui;
  */
 public class ProcessHolder {
     
-    private Process p;
+    private Process p = null;
 
     public void setP(Process p) {
         this.p = p;
@@ -19,7 +19,8 @@ public class ProcessHolder {
     
     public void stopproc(){
     
-        p.destroy();
+        if(p != null)
+            p.destroy();
         
     }
     

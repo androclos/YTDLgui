@@ -31,14 +31,14 @@ public class ytdlFunctions {
                 public void run() {
                     
                     try {
-                        
+       
                         String dlspeed = "100000K";
-                        
                         if(uifuncs.Dlspeedcheck()){
                             try{
                                 Integer.valueOf(uifuncs.Dlspeed());
                             }
                             catch(Exception c){
+                                System.out.println("hiba");
                                 uifuncs.WriteToConsole("Wrong speed format."+"\n");
                                 return;
                             }
@@ -54,9 +54,11 @@ public class ytdlFunctions {
                            String[] tempcm2 = {"youtube-dl.exe","-r",dlspeed, "--extract-audio" ,"--audio-format", "mp3", uifuncs.GetYtdlLink()};
                            cmd = tempcm2;
                         }
+
+                        ProcessBuilder builder = new ProcessBuilder(cmd);
+                        builder.redirectErrorStream(true);
+                        Process p = builder.start();
                         
-                        Process p = Runtime.getRuntime().exec(cmd);
-                        currentproc.setP(p);
                         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
                         
                         String s = null;
@@ -87,6 +89,7 @@ public class ytdlFunctions {
             //new Thread(r).start();
             
         } catch (Exception ex) {
+            uifuncs.WriteToConsole(ex.getMessage());
             Logger.getLogger(ytdlFunctions.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -104,7 +107,9 @@ public class ytdlFunctions {
                     try {
                         uifuncs.ClearDropdownlist();
                         final String[] cmd = {"youtube-dl.exe", "-F", uifuncs.GetYtdlLink()};
-                        Process p = Runtime.getRuntime().exec(cmd);
+                        ProcessBuilder builder = new ProcessBuilder(cmd);
+                        builder.redirectErrorStream(true);
+                        Process p = builder.start();
                         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
                         
                         String s = null;

@@ -74,7 +74,7 @@ public class Connector {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 
                 try {
-                    exesrv.shutdownNow();
+                    //exesrv.shutdownNow();
                     currentproc.stopproc();
                     Thread.sleep(250);
                     uifuncs.ResetDlBar();
