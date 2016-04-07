@@ -6,9 +6,12 @@
 package ytdlgui;
 
 import gui.ytdlFRAME;
+import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -53,9 +56,17 @@ public class Connector {
     private void ChechkFFmpeg(){
     
         try {
-            Process p = Runtime.getRuntime().exec("ffmpeg -version");
+            Process p = Runtime.getRuntime().exec("ffmpegg -version");
         } catch (IOException ex) {
-            uifuncs.WriteToConsole("ffmpeg is not installed !");
+            try {
+                uifuncs.WriteToConsole("Ffmpeg is not installed! - Download at: https://ffmpeg.zeranoe.com/builds/");
+                Desktop d = Desktop.getDesktop();
+                d.browse(new URI("https://ffmpeg.zeranoe.com/builds/"));
+            } catch (URISyntaxException ex1) {
+                Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex1);
+            } catch (IOException ex1) {
+                Logger.getLogger(Connector.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
     
     }
